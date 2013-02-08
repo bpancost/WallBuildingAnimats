@@ -1,12 +1,17 @@
 package com.pancost.wallBuildingSimulation;
 
-import sim.engine.SimState;
-import sim.display.*;
-import sim.portrayal.grid.*;
-import sim.util.gui.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JFrame;
-import org.jfree.chart.*;
+import org.jfree.chart.ChartPanel;
+import sim.display.Console;
+import sim.display.Controller;
+import sim.display.Display2D;
+import sim.display.GUIState;
+import sim.engine.SimState;
+import sim.portrayal.grid.FastValueGridPortrayal2D;
+import sim.portrayal.grid.SparseGridPortrayal2D;
+import sim.util.gui.SimpleColorMap;
 
 public class WallBuildingWithUI extends GUIState {
     public Display2D display;
@@ -102,12 +107,15 @@ public class WallBuildingWithUI extends GUIState {
         addChartPanel(c);
     }
         
+    @Override
     public void quit(){
         super.quit();
         
         // disposing the displayFrame automatically calls quit() on the display,
         // so we don't need to do so ourselves here.
-        if (displayFrame!=null) displayFrame.dispose();
+        if (displayFrame!=null) {
+            displayFrame.dispose();
+        }
         displayFrame = null;  // let gc
         display = null;       // let gc
     }

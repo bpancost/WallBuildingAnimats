@@ -1,9 +1,11 @@
 package com.pancost.wallbuildingsimulation.evolve;
 
-import java.util.*;
+import java.util.Date;
+import java.util.Random;
 
 public class EvolutionEngine {
-    private static double mutationRate = .05;
+    
+    private final static double MUTATION_RATE = .05;
 
     /**
      * 
@@ -21,7 +23,7 @@ public class EvolutionEngine {
         System.arraycopy(parent1Encoding, 0, childEncoding, 0, crossoverLocation);
         System.arraycopy(parent2Encoding, crossoverLocation, childEncoding, crossoverLocation, 60 - crossoverLocation);
         for(int k = 0; k < 60; k++){
-            if(r.nextDouble() <= mutationRate){
+            if(r.nextDouble() <= MUTATION_RATE){
                 if(r.nextDouble() <= .5){
                     childEncoding[k] = r.nextDouble();
                 }else{
